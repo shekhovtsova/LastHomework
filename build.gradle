@@ -50,5 +50,5 @@ allure {
 }
 
 testCards.doFirst {
-    jvmArgs "-javaagent:(configuration.agent.singleFile)"
+    jvmArgs "-javaagent:(configurations.agent.singleFile)"
 }
