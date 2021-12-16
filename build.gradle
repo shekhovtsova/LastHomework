@@ -19,7 +19,7 @@ repositories {
 }
 
 configurations {
-    agent
+    testCompile
 }
 dependencies {
 // https://mvnrepository.com/artifact/org.testng/testng
@@ -50,5 +50,5 @@ allure {
 }
 
 testCards.doFirst {
-    jvmArgs '-Dwdm.chromeDriverVersion=85.0.4183.87'
+    jvmArgs "javaagent"
 }
