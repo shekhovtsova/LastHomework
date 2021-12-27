@@ -6,11 +6,10 @@ import com.qase.qa.pages.util.CardData;
 import com.qase.qa.pages.util.LoginData;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class FirstTest {
@@ -18,9 +17,9 @@ public class FirstTest {
     CardData cardData = new CardData("NewCard", "Description", "Critical");
     LoginData loginData = new LoginData("voddoleyka@gmail.com", "7@mQVN!D8xsxd*m");
 
-        @BeforeSuite(alwaysRun = true)
+        @BeforeClass(alwaysRun = true)
         public void setUp() throws Exception {
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 
             Configuration.browser="chrome";
             Configuration.browserSize = "800x600";
@@ -84,7 +83,7 @@ public class FirstTest {
 
         @AfterMethod
         public void tearDown() throws Exception {
-            close();
+            closeWindow();
         }
 
 }
